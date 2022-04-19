@@ -30,7 +30,7 @@ int main() {
   sort(list.begin() + K + 1, list.end()) ;
   int ans = N ;
   for (int i = 0 ; i < K ; i++) {
-    
+
   }
   cout << ans << endl ;
 }
