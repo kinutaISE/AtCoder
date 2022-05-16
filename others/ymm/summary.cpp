@@ -67,10 +67,10 @@ const int BODER_LINES[SUBJECT_NUM] = {
 class Student {
 protected:
   // メンバフィールド //////////
+  string id ;
   int scores[SUBJECT_NUM] ; // 数学の点数 → scores[Mathematics]（SUBJECT型は base_infomation.h に定義）
   ///////////////////////////
 public:
-  string id ;
   // コンストラクタ //////////////////
   Student(vector<string> data) ;
   /////////////////////////////////
@@ -322,7 +322,7 @@ vector<Student> get_worst_average_students(vector<Student> ss) {
 // 学生のベクトル ss に含まれている学生の ID と 平均点をカンマ区切りで出力する関数
 void show_id_average(vector<Student> ss) {
   for (Student s : ss)
-    cout << s.id << "," << s.get_average_float() << endl ;
+    cout << s.get_id() << "," << s.get_average_float() << endl ;
 }
 
 
