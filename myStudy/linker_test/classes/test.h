@@ -1,0 +1,6 @@
+#ifndef TEST_H_DIJIAHBI8918_INCLUDED_
+#define TEST_H_DIJIAHBI8918_INCLUDED_
+
+const int N = 10 ;
+
+#endif
