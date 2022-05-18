@@ -5,7 +5,7 @@
 
 using namespace std ;
 
-InputStream::InputStream(char* filename[]) {
+InputStream::InputStream(char* filename) {
   fstream file ;
   file.open(filename, ios::in) ;
 
@@ -15,22 +15,23 @@ InputStream::InputStream(char* filename[]) {
   // 以降の行の読み込み
   string line ;
   while ( getline(file, line) )
-    line_data.push_back(line) ;
+    lines_data.push_back(line) ;
 }
 InputStream::InputStream(string filename) {
   InputStream(filename.c_str());
 }
-vector<string> get_attributes() {
+void InputStream::show_input() {
+  cout << line_header << endl ;
+  for (string line : lines_data)
+    cout << line << endl ;
+}
+vector<string> InputStream::get_attributes() {
   return split(line_header) ;
 }
-vector< vector<string> > get_student_info() {
-  vector< vector<string> > student_info_container ;
-  for (auto line : lines_data) {
-    student_info_container.push_back( split(line) ) ;
-  }
-  return student_info_container ;
+vector<string> InputStream::get_student_info(int i) {
+  return split(lines_data[i]) ;
 }
-vector<string> split(const string str, char del = DELIMITER) {
+vector<string> InputStream::split(const string str, char del) {
   vector<string> result(1) ;
   int pos = 0 ;
   for (char c : str) {

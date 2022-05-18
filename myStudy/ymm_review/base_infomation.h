@@ -6,6 +6,8 @@
 
 #include <vector>
 
+using namespace std ;
+
 // 科目名
 vector<string> subject_names ;
 

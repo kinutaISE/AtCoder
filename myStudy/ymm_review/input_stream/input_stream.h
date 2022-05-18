@@ -4,6 +4,9 @@
 #include <iostream>
 #include <fstream>
 #include <vector>
+#include <string>
+
+using namespace std ;
 
 const char DELIMITER = ',' ;
 
@@ -12,10 +15,11 @@ protected:
   string line_header ;
   vector<string> lines_data ;
 public:
-  InputStream(char* filename[]) ;
+  InputStream(char* filename) ;
   InputStream(string filename) ;
+  void show_input() ;
   vector<string> get_attributes() ;
-  vector< vector<string> > get_student_info() ;
+  vector<string> get_student_info(int i) ;
   vector<string> split(string str, char del = DELIMITER) ;
 } ;
 
