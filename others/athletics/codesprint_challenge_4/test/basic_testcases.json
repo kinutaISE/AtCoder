@@ -1,0 +1,128 @@
+[
+   {
+      "input": "in/basic/00_sample1.in",
+      "output": "out/basic/00_sample1.out",
+      "description_en": "[Basic Case] The solution is correct for 201",
+      "description": "[基本実装] 201で正答できる"
+   },
+   {
+      "input": "in/basic/00_sample2.in",
+      "output": "out/basic/00_sample2.out",
+      "description_en": "[Large Case] The solution is correct for 12212122212222",
+      "description": "[大規模なデータ入力を扱う実装] 12212122212222で正答できる"
+   },
+   {
+      "input": "in/basic/10_small0.in",
+      "output": "out/basic/10_small0.out",
+      "description_en": "[Basic Case] The solution is correct for 398 (simple test case)",
+      "description": "[基本実装] 398で正答できる（簡単なテストケース）"
+   },
+   {
+      "input": "in/basic/10_small1.in",
+      "output": "out/basic/10_small1.out",
+      "description_en": "[Basic Case] The solution is correct for 16489 (simple test case)",
+      "description": "[基本実装] 16489で正答できる（簡単なテストケース）"
+   },
+   {
+      "input": "in/basic/10_small2.in",
+      "output": "out/basic/10_small2.out",
+      "description_en": "[Basic Case] The solution is correct for 3855664 (simple test case)",
+      "description": "[基本実装] 3855664で正答できる（簡単なテストケース）"
+   },
+   {
+      "input": "in/basic/10_small3.in",
+      "output": "out/basic/10_small3.out",
+      "description_en": "[Basic Case] The solution is correct for 60069536 (simple test case)",
+      "description": "[基本実装] 60069536で正答できる（簡単なテストケース）"
+   },
+   {
+      "input": "in/basic/10_small4.in",
+      "output": "out/basic/10_small4.out",
+      "description_en": "[Basic Case] The solution is correct for 9 (simple test case)",
+      "description": "[基本実装] 9で正答できる（簡単なテストケース）"
+   },
+   {
+      "input": "in/basic/10_small5.in",
+      "output": "out/basic/10_small5.out",
+      "description_en": "[Basic Case] The solution is correct for 702 (simple test case)",
+      "description": "[基本実装] 702で正答できる（簡単なテストケース）"
+   },
+   {
+      "input": "in/basic/10_small6.in",
+      "output": "out/basic/10_small6.out",
+      "description_en": "[Basic Case] The solution is correct for 10000000 (simple test case)",
+      "description": "[基本実装] 10000000で正答できる（簡単なテストケース）"
+   },
+   {
+      "input": "in/basic/10_small7.in",
+      "output": "out/basic/10_small7.out",
+      "description_en": "[Basic Case] The solution is correct for 11201200 (simple test case)",
+      "description": "[基本実装] 11201200で正答できる（簡単なテストケース）"
+   },
+   {
+      "input": "in/basic/10_small8.in",
+      "output": "out/basic/10_small8.out",
+      "description_en": "[Basic Case] The solution is correct for 11110000 (simple test case)",
+      "description": "[基本実装] 11110000で正答できる（簡単なテストケース）"
+   },
+   {
+      "input": "in/basic/20_medium1.in",
+      "output": "out/basic/20_medium1.out",
+      "description_en": "[Case With Exceptions] The solution is correct for 8840810935771860 (16 digits)",
+      "description": "[例外処理を伴う実装] 8840810935771860 (16桁) で正答できる"
+   },
+   {
+      "input": "in/basic/20_medium2.in",
+      "output": "out/basic/20_medium2.out",
+      "description_en": "[Large Case] The solution is correct for 3243314113443224 (16 digits)",
+      "description": "[大規模なデータ入力を扱う実装] 3243314113443224 (16桁) で正答できる"
+   },
+   {
+      "input": "in/basic/20_medium3.in",
+      "output": "out/basic/20_medium3.out",
+      "description_en": "[Case With Exceptions] The solution is correct for 1010000000 (10 digits)",
+      "description": "[例外処理を伴う実装] 1010000000 (10桁) で正答できる"
+   },
+   {
+      "input": "in/basic/20_medium4.in",
+      "output": "out/basic/20_medium4.out",
+      "description_en": "[Case With Exceptions] The solution is correct for 60000000000000000 (17 digits)",
+      "description": "[例外処理を伴う実装] 60000000000000000 (17桁) で正答できる"
+   },
+   {
+      "input": "in/basic/20_medium5.in",
+      "output": "out/basic/20_medium5.out",
+      "description_en": "[Case With Exceptions] The solution is correct for 25551044350305 (14 digits)",
+      "description": "[例外処理を伴う実装] 25551044350305 (14桁) で正答できる"
+   },
+   {
+      "input": "in/basic/30_large1.in",
+      "output": "out/basic/30_large1.out",
+      "description_en": "[Case With Exceptions] The solution is correct for 100 digits",
+      "description": "[例外処理を伴う実装] 100桁で正答できる"
+   },
+   {
+      "input": "in/basic/30_large2.in",
+      "output": "out/basic/30_large2.out",
+      "description_en": "[Case With Exceptions] The solution is correct for 99 digits",
+      "description": "[例外処理を伴う実装] 99桁で正答できる"
+   },
+   {
+      "input": "in/basic/30_large3.in",
+      "output": "out/basic/30_large3.out",
+      "description_en": "[Case With Exceptions] The solution is correct for 98 digits",
+      "description": "[例外処理を伴う実装] 98桁で正答できる"
+   },
+   {
+      "input": "in/basic/30_large4.in",
+      "output": "out/basic/30_large4.out",
+      "description_en": "[Large Case] The solution is correct for 78 digits",
+      "description": "[大規模なデータ入力を扱う実装] 78桁で正答できる"
+   },
+   {
+      "input": "in/basic/30_large5.in",
+      "output": "out/basic/30_large5.out",
+      "description_en": "[Case With Exceptions] The solution is correct for 50 digits",
+      "description": "[例外処理を伴う実装] 50桁で正答できる"
+   }
+]

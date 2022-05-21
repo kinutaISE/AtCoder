@@ -1,0 +1,14 @@
+{
+  "input": {
+    "type": "stdin"
+  },
+  "output": {
+    "type": "stdout"
+  },
+  "limitations": {
+    "maxLines" : 20,
+    "maxCharacters" : 300
+  },
+  "timeout": 6000
+}
+
