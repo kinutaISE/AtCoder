@@ -20,8 +20,12 @@ Meters::Meters() {
   fare = 0.0 ;
 }
 void Meters::update(const Record &record) const {
-  if ( is_low_speed(record) )
+  if ( is_low_speed(record) ) {
+    // 定速運転時は、
+  }
+  else {
 
+  }
 }
 bool is_low_speed(const Record &record) const {
   return calculate_spped(record) <= 36000 ;
