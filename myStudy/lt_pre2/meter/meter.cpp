@@ -21,7 +21,8 @@ Meters::Meters() {
 }
 void Meters::update(const Record &record) const {
   if ( is_low_speed(record) ) {
-    // 定速運転時は、
+    // 低速運転
+    
   }
   else {
 
