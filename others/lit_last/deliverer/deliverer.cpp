@@ -108,7 +108,7 @@ bool DelivererSet::is_available(Query q) {
 }
 Deliverer DelivererSet::get_best_deliverer(Query q) {
   Deliverer deliverer ;
-  int best_dist = pow(10, 10) ;
+  int best_dist = 10000 ;
   for (auto &s_d : container) {
     Deliverer d = s_d.second ;
     if (! d.is_available(q))
