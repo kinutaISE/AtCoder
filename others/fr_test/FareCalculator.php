@@ -55,7 +55,7 @@ class FareCalculator
     // 総走行距離を初乗りレコードの距離（0.0）で初期化する
     $this->total_distance = $record['走行距離'] ;
     // 深夜帯を考慮した走行距離を計算する
-    $this->total_distance *= ( is_midnight($this->previous_time) ? 1.25 : 1 ) ;
+    $this->total_distance *= ( is_midnight($this->previous_time) ? FARE_INFO['深夜']['割増率'] : 1 ) ;
     // 総運賃を初乗り運賃で初期化する
     $total_fare = FARE_INFO['初乗り']['運賃'] ;
     // 低速走行時間を初期化する
@@ -80,6 +80,7 @@ class FareCalculator
         time_diff($this->previous_time, $time) : 0 ;
     // 深夜帯を考慮した低速走行時間を求める
     $low_speed_time *= ( is_midnight($time) ? FARE_INFO['深夜']['割増率'] : 1 ) ;
+
     // 低速走行時間に加算する
     $this->total_lowspeed_time += $low_speed_time ;
 

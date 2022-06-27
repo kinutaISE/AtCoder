@@ -34,7 +34,15 @@ function validate_records($records)
     if ( !is_before($previous_record, $current_record) )
       return false ;
   }
-  return true ;
+
+  // 総走行距離が 0 m のレコードでないか
+  $is_zero_dist = true ;
+  foreach ($records as $record) {
+    $splited_record = explode(' ', $record) ;
+    $is_zero_dist = $is_zero_dist && ($splited_record[1] === '0.0') ;
+  }
+
+  return !$is_zero_dist ;
 }
 // 2つのレコードが時刻順になっているかを判定する
 function is_before($pre_record, $succ_record) {
@@ -47,36 +55,12 @@ function is_before($pre_record, $succ_record) {
 // 文字列が距離の形式になっているのかどうかを判定する
 function is_dist_str($str)
 {
-  return preg_match('/^([1-9][0-9]{0,1}|0)(\.[0-9]{1,1})?$/', $str) ;
+  return preg_match('/^([1-9][0-9]\.[0-9]|[0-9]\.[0-9])?$/', $str) ;
 }
 // 文字列が hh:mm:ss.fff（文字列）形式の時刻であるかどうかを判定する
 function is_time_str($str)
 {
-  return isMatch_HHMMSS($str) ;
-}
-// 正規表現による時刻形式のチェック
-function isMatch($pattern, $text, $errorIfEmpty = TRUE, &$matches = array()) {
-  // 空文字チェック
-  if ($text == '')
-      return !$errorIfEmpty;
-  return !preg_match($pattern, $text, $matches) ;
-}
-function isMatch_HHMMSS($text, $decimal = 0, $delim = ':', $errorIfEmpty = TRUE) {
-  // 空文字チェック
-  if ($text == '')
-    return !$errorIfEmpty;
-
-  $pattern = '/^(0[0-9]{1}|1{1}[0-9]{1}|2{1}[0-3]{1})' . $delim . '(0[0-9]{1}|[1-5]{1}[0-9]{1})' . $delim . '(0[0-9]{1}|[1-5]{1}[0-9]{1})';
-
-  // 小数部があればパターンに追加
-  if ($decimal > 0)
-    $pattern = $pattern . sprintf('\.([0-9]{%d})', $decimal);
-  $pattern = $pattern . '$/';
-
-  return isMatch($pattern, $text, $errorIfEmpty);
-}
-function testisMatch_HHMMSS($time, $decimal = 0, $delim = ':'){
-  return isMatch_HHMMSS($time, $decimal, $delim) ;
+  return preg_match('/^([0-9][0-9]:[0-5][0-9]:[0-5][0-9]\.[0-9][0-9][0-9])?$/', $str) ;
 }
 // hh:mm:ss.fff（文字列）形式で受け取った時刻を時・分・秒にわけて返す
 function split_time($time)
