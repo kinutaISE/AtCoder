@@ -12,45 +12,6 @@ function main($line)
     return ERROR_CODE ;
   }
 
-  // // 以下は仕様に従った入力であることを前提としたコード
-  // // 整数部分と小数部分に分ける
-  // $integer_part = $line ;
-  // $fractional_part ;
-  // if ( strpos($line, '.') !== false ) {
-  //   $number = explode('.', $line) ;
-  //   $integer_part = $number[0] ;
-  //   $fractional_part = $number[1] ;
-  // }
-  // // 1000 ごとに切り出す
-  // $number_splited = array() ;
-  // $digit = 0 ;
-  // do {
-  //   $digit++ ;
-  //   $key = ($digit === 1) ? '' : (
-  //     ($digit === 2) ? 'thousand' : 'billion'
-  //   ) ;
-  //   $number_splited[$key] = $integer_part % 1000 ;
-  //   $integer_part /= 1000 ;
-  //   $integer_part = round($integer_part) ;
-  // } while ($integer_part > 0) ;
-  //
-  // // 1000 ごとに切り出した各部分を英語表記にする
-  // $ans = array() ;
-  // if ($digit === 3)
-  //   $ans[] = to_english($number_splited['billion']) . ' billion' ;
-  // if ($digit >= 2) {
-  //   $str = to_english($number_splited['thousand']) ;
-  //   if ($str !== '')
-  //     $ans[] = $str . ' thousand' ;
-  // }
-  // $ans[] = ($number_splited[''] === 0) ? 'zero' : to_english($number_splited['']) ;
-  //
-  // // 小数点以下を英語表記にする
-  // if ( !empty($fractional_part) ) {
-  //   $fractional_part = to_english_fractional($fractional_part) ;
-  //   $ans[] = 'point ' . $fractional_part ;
-  // }
-
   $ans = to_english($line) ;
 
   // printf('%s', ucfirst( implode(' ', $ans) )) ;
@@ -104,7 +65,7 @@ function to_english($line)
     ) ;
     $number_splited[$key] = $integer_part % 1000 ;
     $integer_part /= 1000 ;
-    $integer_part = round($integer_part) ;
+    $integer_part = floor($integer_part) ;
   } while ($integer_part > 0) ;
 
   // 1000 ごとに切り出した各部分を英語表記にする
@@ -141,8 +102,8 @@ function to_english_less_1000($str)
   // それ以上 (20 以上 999 以下) の場合
   $res = array() ;
   if ($str >= 100)
-    $res[] = to_english_one_digit( round($str / 100) ) . ' hundred' ;
-  $ten_digit = round($str % 100 / 10) * 10 ;
+    $res[] = to_english_one_digit( floor($str / 100) ) . ' hundred' ;
+  $ten_digit = floor($str % 100 / 10) * 10 ;
   if ($ten_digit !== 0) {
     $res[] = to_english_10times($ten_digit) ;
     $one_digit = $str % 10 ;
