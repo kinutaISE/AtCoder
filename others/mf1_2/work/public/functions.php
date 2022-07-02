@@ -7,17 +7,14 @@ function main($line)
   // 仕様に従った入力であるか判定
   if ( !validate_input($line) ) {
     // 仕様に従った入力でない場合
-    // printf('%d', ERROR_CODE) ;
-    // return 0 ;
-    return ERROR_CODE ;
+    printf('%d', ERROR_CODE) ;
+    return ;
   }
-
+  // 英語表記を求める
   $ans = to_english($line) ;
-
-  // printf('%s', ucfirst( implode(' ', $ans) )) ;
-  return ucfirst( implode(' ', $ans) ) ;
+  printf('%s', ucfirst( implode(' ', $ans) ) ) ;
 }
-
+// 仕様に従った入力であるかどうかを判定する関数
 function validate_input($line)
 {
   // 空文字かどうか
@@ -43,10 +40,10 @@ function validate_input($line)
 
   return true ;
 }
-
+// 英語表記に変換した文字列を返す関数
 function to_english($line)
 {
-  // 以下は仕様に従った入力であることを前提としたコード
+  // 前提：$line は仕様に従った入力である
   // 整数部分と小数部分に分ける
   $integer_part = $line ;
   $fractional_part ;
@@ -61,7 +58,9 @@ function to_english($line)
   do {
     $digit++ ;
     $key = ($digit === 1) ? '' : (
-      ($digit === 2) ? 'thousand' : 'billion'
+      ($digit === 2) ? 'thousand' : (
+        ($digit === 3) ? 'million' : 'billion'
+      )
     ) ;
     $number_splited[$key] = $integer_part % 1000 ;
     $integer_part /= 1000 ;
@@ -70,8 +69,13 @@ function to_english($line)
 
   // 1000 ごとに切り出した各部分を英語表記にする
   $ans = array() ;
-  if ($digit === 3)
+  if ($digit === 4)
     $ans[] = to_english_less_1000($number_splited['billion']) . ' billion' ;
+  if ($digit >= 3) {
+    $str = to_english_less_1000($number_splited['million']) ;
+    if ($str !== '')
+      $ans[] = $str . ' million' ;
+  }
   if ($digit >= 2) {
     $str = to_english_less_1000($number_splited['thousand']) ;
     if ($str !== '')
@@ -80,17 +84,20 @@ function to_english($line)
   $ans[] =
     ($number_splited[''] === 0 && $digit === 1) ? 'zero' : to_english_less_1000($number_splited['']) ;
 
-  // 小数点以下を英語表記にする
+  // 小数点以下が存在する場合、英語表記にして追記する
   if ( !empty($fractional_part) ) {
     $fractional_part = to_english_fractional($fractional_part) ;
     $ans[] = 'point ' . $fractional_part ;
   }
 
+  // 求めた英語表記を出力する
   return $ans ;
 }
-
+// 1000 未満の数字の英語表記を返す関数
 function to_english_less_1000($str)
 {
+  // 前提：$str は 0 以上 999 以下
+  // $str が 0 の場合は何も返さない（入力された数字が 0 の場合の処理は別途 to_english() 関数でおこなっている）
   if ($str === 0)
     return '' ;
   // 0 以上 9 以下の場合
@@ -103,12 +110,23 @@ function to_english_less_1000($str)
   $res = array() ;
   if ($str >= 100)
     $res[] = to_english_one_digit( floor($str / 100) ) . ' hundred' ;
-  $ten_digit = floor($str % 100 / 10) * 10 ;
-  if ($ten_digit !== 0) {
-    $res[] = to_english_10times($ten_digit) ;
-    $one_digit = $str % 10 ;
-    if ($one_digit !== 0)
-      $res[] = to_english_one_digit($one_digit) ;
+  // 残りの1桁 or 2桁について場合分け
+  $ten_digit = floor($str % 100) ;
+  if ( $ten_digit != 0 ) {
+    // 0 以上 9 以下の場合
+    if ($ten_digit <= 9)
+      $res[] = to_english_one_digit($ten_digit) ;
+    // 10 以上 19 以下の場合
+    else if ($ten_digit <= 19)
+      $res[] = to_english_two_digit($ten_digit) ;
+    // 20 以上 99 以下の場合
+    else {
+      $ten_digit = floor($ten_digit / 10) * 10 ;
+      $res[] = to_english_10times($ten_digit) ;
+      $one_digit = $str % 10 ;
+      if ($one_digit != 0)
+        $res[] = to_english_one_digit($one_digit) ;
+    }
   }
   return implode(' ', $res) ;
 }
@@ -187,9 +205,10 @@ function to_english_10times($str)
       return 'ninety' ;
   }
 }
-
+// 小数点以下の文字列を返す関数
 function to_english_fractional($str)
 {
+  // 前提：$str は小数点以下の文字列（ 3.222 であれば 222 ）
   $res = array() ;
   for ($i = 0 ; $i < strlen( $str ) ; $i++)
     $res[] = to_english_one_digit( substr( $str, $i, 1) ) ;

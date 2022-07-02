@@ -18,6 +18,7 @@ $lines = [
   12.34,
   100.55,
   100000999.53214,
+  74419700420,
   'aaa',
   '',
   '0055',
@@ -32,6 +33,6 @@ $lines = [
 
 <ul>
   <?php foreach ($lines as $line):?>
-    <li><?= $line . ' → ' . main($line) ;?></li>
+    <li><?= $line . ' → ';?><?php main($line) ?></li>
   <?php endforeach ;?>
 </ul>
