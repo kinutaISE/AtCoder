@@ -1,0 +1,13 @@
+---
+
+version: '3.8'
+services:
+  php:
+    build: php
+    ports:
+    - 8565:8000
+    volumes:
+    - ./work:/work
+
+volumes:
+  db-data:
